@@ -1,0 +1,71 @@
+.new-post {
+    padding: 16px 0;
+
+
+}
+
+.new-post header,
+.posts header {
+    margin-bottom: 20px;
+}
+
+.posts .post {
+    padding-left: 10px;
+    border-left: 3px solid #a21b24;
+    margin-bottom: 30px;
+}
+
+.posts .post .info {
+    color: #aaa;
+    font-style: italic;
+}
+
+.error,
+.success {
+    text-align: center;
+}
+
+.error {
+    border: 1px solid red;
+    background-color: #f9b5af;
+    color: red;
+}
+
+.error ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.success {
+    border: 1px solid green;
+    background-color: #d1f9da;
+    color: green;
+}
+
+.dbody1{
+    min-width:40%;
+}
+
+.dbody2{
+   max-width:40%;
+}
+
+.line{
+    border-bottom: 1px solid #ccc;
+    max-width: 55%;
+    margin: 0 auto;
+    margin-top: 10px;
+
+}
+
+.card{
+    margin: 0 auto 10px auto;
+
+    border: 0px ;
+    border-left: 4px solid rgba(97, 16, 10, 0.603);
+}
+
+.info{
+    font-style: italic;
+}
