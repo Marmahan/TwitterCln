@@ -49,50 +49,57 @@
                             <li class="list-group-item info">Posted by {{ $post->user->name}} on {{ $post->created_at }} </li>
                             <li class="list-group-item">
                                 <a href="#">Like </a>|
-                                <a href="#">Dislike </a>|
-                                <a href="#">Edit </a>|
-                                <a href="#">Delete</a>
+                                <a href="#">Dislike </a>
+                                @if (Auth::user()==$post->user)
+                                    |
+                                    <a href="{{route('editpost', ['post' => $post])}}">Edit </a>|
+                                    <a href="{{route('delete_post', ['post' => $post])}}">Delete</a>
+                                @endif
                             </li>
                         </ul>
                     </div>
                 @endforeach
             @endif
-              {{--  @foreach ($posts as $post)
-                    <article class="post">
-                        <p>{{$post->body}}</p>
-                        <div class="info">
-                            Posted by {{ Auth::user()->name }} on {{$post->created_at}}
-                        </div>
-                        <div class="interaction">
-                            <a href="#">Like</a>
-                            <a href="#">Dislike</a>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
-                    </article>
-                @endforeach --}}
-
-
-                {{-- <article class="post">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptate sed dignissimos quo modi delectus natus est pariatur molestias illum reiciendis laboriosam fugit magni ut quae itaque sapiente, necessitatibus nihil.</p>
-                    <div class="info">
-                        Posted by XXX on YY.TT.YUHJ
-                    </div>
-                    <div class="interaction">
-                        <a href="#">Like</a>
-                        <a href="#">Dislike</a>
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                </article> --}}
-            {{-- </section> --}}
         </div>
     </div>
 
 
+    <div class="modal" tabindex="-1" role="dialog" id='editModal'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="post-body">Edit the Post</label>
+                      <textarea name="post-body" id="post-body" class="form-control" rows="10"></textarea>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script>
+$(document).ready(function () {
 
+    // $('.editpost').on('click', function(event) {
+    //     event.preventDefault();
+
+        // var postBody = event.target.parentNode.parentNode.childNodes[1].textContent;
+        // $('#post-body').val(postBody);
+        // $('#editModal').modal();
+   // });
+});
     </script>
 @endsection
 

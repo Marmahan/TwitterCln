@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //get all posts of the authonticated user
-        $posts = User::find(Auth::user()->id)->posts;
+        //get all posts of the authonticated/logged in user
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('dashboard')->with('posts', $posts);
     }
 
@@ -29,6 +29,8 @@ class PostController extends Controller
     public function create(Request $request)
     {
 
+        //validate the request
+        //body is required with minimun length of 3
         $request->validate([
             'body' => 'required|min:3',
         ]);
@@ -37,6 +39,7 @@ class PostController extends Controller
         $post = new Post;
         $post->body = $request->body;
 
+        //get the authonticated/logged in user
         $user = Auth::user();
         $user->posts()->save($post);
         return redirect('/home');
@@ -70,9 +73,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    //show the update form
+    public function edit(Request $request)
     {
-        //
+        //get the post from the database
+        $post = Post::find($request->post);
+        //pass the post back to the updating form
+        return view('postupdate')->with('post',$post);
+    }
+
+
+    public function updateform(Request $request){
+
+
     }
 
     /**
@@ -84,7 +97,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        //find the specific post
+        $post = Post::find($post->id);
+        //update the body of the post
+        $post->body = $request->body;
+        //save changes to the database
+        $post->save();
+        //redirect back to all the posts
+        return redirect('/posts');
     }
 
     /**
@@ -95,6 +115,17 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+
+        //protect deleting a post if it
+        //doesn't belong to the logged in user
+        if(Auth::user() != $post->user)
+            return redirect('/posts');
+
+        $post->delete();
+        //redirect so we get a fresh list of
+        //all the posts of the specified user
+        return redirect('/posts');
+
     }
 }

@@ -26,6 +26,21 @@ Auth::routes();
 
 Route::get('/home', 'PostController@index');
 
-Route::get('/posts', 'PostController@index');
+Route::get('/posts', 'PostController@index')->name('allposts');
 
 Route::post('/posts/create', 'PostController@create');
+
+//show the update form
+Route::get('/updateform','PostController@edit')->name('editpost');
+
+Route::put('/posts/{post}','PostController@update')->name('updatepost');
+
+Route::get('/posts/{post}', 'PostController@destroy')->name('delete_post');
+
+
+Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('editprofile');
+
+
+Route::get('/profile', function(){
+    return view('account');
+})->name('profile');
