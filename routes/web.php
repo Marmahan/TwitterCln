@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,10 +39,16 @@ Route::put('/posts/{post}','PostController@update')->name('updatepost');
 
 Route::get('/posts/{post}', 'PostController@destroy')->name('delete_post');
 
+Route::get('/profile/{profile}/show', 'ProfileController@show')->name('profile');
 
 Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('editprofile');
 
+Route::put('/profile/{profile}/update', 'ProfileController@update')->name('updateprofile');
 
-Route::get('/profile', function(){
-    return view('account');
-})->name('profile');
+
+
+// , function(){
+//     return view('account');
+// })->name('profile');
+
+//Route::get('download/{file}', 'ProfileController@download');

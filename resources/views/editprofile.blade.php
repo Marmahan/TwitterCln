@@ -18,7 +18,11 @@
             </div> --}}
             <h3>Personal info</h3>
 
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" action="/profile/{profile}/update" role="form" method='POST' enctype="multipart/form-data">
+
+                {{-- because we can't add PUT directly in the method --}}
+                @method('PUT')
+
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">

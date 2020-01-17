@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Profile;
 
 class ProfileController extends Controller
 {
@@ -45,7 +46,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('account');
     }
 
     /**
@@ -56,7 +57,10 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        return view('editprofile');
+        //get the profile from the database
+        $profile = Profile::find($id);
+        return $profile;
+        //return view('editprofile')->with('profile',$profile);;
     }
 
     /**
@@ -68,7 +72,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'updated';
     }
 
     /**
@@ -80,5 +84,11 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function download($file){
+        $filePath = storage_path('profiles\\'.$file);
+        return response()->download($filePath);
     }
 }
