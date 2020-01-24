@@ -75,10 +75,10 @@ class RegisterController extends Controller
         if($request->hasfile('image')){
 
         //upload the file to storage/app/public/uploads
-        $path = $request->file('image')->store('profiles','public');
+        $path = $request->file('image')->store('uploads','public');
 
         //make the images 1200*1200
-        $image = Image::make(public_path("storage/{$path}"))->fit(225, 225);
+        $image = Image::make(public_path("storage/{$path}"))->fit(1200, 1200);
 
         $image->save();
 

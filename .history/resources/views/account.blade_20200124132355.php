@@ -11,13 +11,13 @@
         </div>
         <div class="col-md-6 details" style="border-left: 5px solid #ded4da;">
           <blockquote>
-            <h5>{{ $user->name }}</h5>
-            <small><cite title="Source Title">{{ $user->address }}  <i class="icon-map-marker"></i></cite></small>
+            <h5>Fiona Gallagher</h5>
+            <small><cite title="Source Title">Chicago, United States of America  <i class="icon-map-marker"></i></cite></small>
           </blockquote>
           <p>
-            {{ $user->email }} <br>
-            {{ $user->url }} <br>
-            {{ $user->birthdate }}
+            fionagallager@shameless.com <br>
+            www.bootsnipp.com <br>
+            June 18, 1990
           </p>
           <div class="d-flex">
             <a href="/profile/1/edit" style="margin-right: 5px;">Profile Update</a>|

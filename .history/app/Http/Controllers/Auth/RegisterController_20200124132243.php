@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $path = $request->file('image')->store('profiles','public');
 
         //make the images 1200*1200
-        $image = Image::make(public_path("storage/{$path}"))->fit(225, 225);
+        $image = Image::make(public_path("storage/{$path}"))->fit(250, 250);
 
         $image->save();
 
