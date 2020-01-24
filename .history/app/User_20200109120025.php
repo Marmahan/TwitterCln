@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Message;
 
 class User extends Authenticatable
 {
@@ -41,11 +40,5 @@ class User extends Authenticatable
     //the user has many posts
     public function posts(){
         return $this->hasMany('App\Post');
-    }
-
-    //One-To-Many relationship
-    //Each User can have one or more Messages
-    public function messages(){
-        return $this->hasMany(Message::class);
     }
 }

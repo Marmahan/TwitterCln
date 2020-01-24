@@ -45,8 +45,6 @@ Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('editprofi
 
 Route::put('/profile/{profile}/update', 'ProfileController@update')->name('updateprofile');
 
-//Messages routes
-Route::post('/message/create', 'MessageController@create');
 
 
 // , function(){
