@@ -7,7 +7,7 @@
       <div class="d-flex p-2 mt-5">
         <div class="col-md-6 img" style="max-width: none; margin-right: 50px;">
           <img src={{ '/' . $user->image }}  alt="" class="img-rounded"
-          style="border-radius: 200px;">
+          style="border-radius: 150px; max-width: 300px;">
         </div>
         <div class="col-md-6 details" style="border-left: 5px solid #ded4da;">
           <blockquote>

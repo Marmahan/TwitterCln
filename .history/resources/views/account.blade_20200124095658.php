@@ -6,8 +6,8 @@
     <div class="row justify-content-center">
       <div class="d-flex p-2 mt-5">
         <div class="col-md-6 img" style="max-width: none; margin-right: 50px;">
-          <img src={{ '/' . $user->image }}  alt="" class="img-rounded"
-          style="border-radius: 200px;">
+          <img src={{$user->image}}  alt="" class="img-rounded"
+          style="border-radius: 100px;">
         </div>
         <div class="col-md-6 details" style="border-left: 5px solid #ded4da;">
           <blockquote>

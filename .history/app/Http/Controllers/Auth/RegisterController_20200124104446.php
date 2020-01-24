@@ -73,10 +73,11 @@ class RegisterController extends Controller
 
         //check if the user uploaded an image
         if($request->hasfile('image')){
-            $avatar =  $request->file('image')->store('public/profiles');
+            $avatar = $request->file('image')->store('public/profiles');
             //replace the string in the path stored in the DB with the actual one
             //that points to the sotred image
             $avatar = str_replace('public/profiles', 'storage/profiles', $avatar);
+            //dd($avatar);
         }
         else //no image uploaded
             $avatar = 'default';
