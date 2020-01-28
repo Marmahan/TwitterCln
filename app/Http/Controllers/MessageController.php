@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
@@ -27,13 +29,29 @@ class MessageController extends Controller
     {
         //get logged in user
         $user = Auth::user();
-        return $user;
+        //return $user;
+
+        //validates the body of the request
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'receiver_name' => 'required',
+        ]);
+
+        //get the receiver info
+        $receiver = User::where('name', $request->input('receiver_name'))->first();
+
+        //Checks validation failure
+        if ($validator->fails()) {
+            //Status code 400 means bad request
+            return response($validator->errors())->setStatusCode(400);
+        }
 
         $message = new Message;
         $message->title = $request->input('title');
         $message->body = $request->input('body');
-        $message->receiver_id = $request->input('receiver_id');
-        $message->user_id = $user->id;
+        $message->receiver_id = $receiver->id; //receiver ID
+        $message->user_id = $user->id;  //sender ID
 
         $message->save();
 
